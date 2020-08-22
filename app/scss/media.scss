@@ -1,0 +1,192 @@
+@media(max-width: 1200px) {
+  .preview {
+    &__product-list {
+      position: relative;
+      flex-wrap: wrap;
+      top: 60px;
+      justify-content: center;
+    }
+
+    &__inner {
+      padding-bottom: 0;
+    }
+
+    &__product-item {
+      margin-bottom: 30px;
+      margin-right: 50px;
+    }
+  }
+
+  .technology {
+    &__list {
+      justify-content: center;
+    }
+
+    &__item {
+      margin-bottom: 30px;
+    }
+  }
+
+  .plan {
+    &__list {
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    &__tarif {
+      max-width: 270px;
+      margin-bottom: 30px;
+    }
+  }
+}
+
+@media(max-width: 992px) {
+
+  .preview {
+    &__product-item {
+      width: 300px;
+      margin-right: 50px !important;
+    }
+  }
+
+  .header {
+    &__nav-mini {
+      display: block;
+    }
+  }
+
+  .nav {
+    &__list {
+      display: none;
+    }
+  }
+}
+
+@media(max-width: 768px) {
+  .plan {
+
+    &__list {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    &__tarif {
+      margin-right: 0;
+    }
+  }
+}
+
+@media(max-width: 576px) {
+
+  .header {
+    top: 15px;
+
+    &__inner {
+      flex-direction: column;
+      align-items: center;
+      padding: 20px 0;
+    }
+
+    &__logo {
+      margin-bottom: 30px;
+    }
+
+    &__container {
+      flex-direction: column;
+      width: 100%;
+    }
+
+    &__nav {
+      order: 1;
+      width: 100%;
+    }
+
+    &__nav-mini {
+      margin-right: 0;
+      width: 100%;
+      align-items: center;
+      display: flex;
+      flex-direction: column;
+    }
+
+    &__button {
+      margin-bottom: 30px;
+    }
+  }
+
+  .preview {
+
+    &__product-item {
+      width: 100%;
+      margin-right: 0 !important;
+    }
+
+    &__title {
+      font-size: 30px;
+      margin-bottom: 30px;
+    }
+
+    &__form {
+      flex-direction: column;
+      height: auto;
+    }
+
+    &__select {
+      min-height: 44px;
+      min-width: 100%;
+    }
+
+    .jq-selectbox {
+
+      &::after {
+        top: 6px;
+      }
+
+      &__select-text {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+      }
+
+      &__dropdown {
+        min-width: 100%;
+        top: 28px !important;
+        left: 0;
+        right: 0;
+
+        ul {
+          li {
+            justify-content: center;
+          }
+        }
+      }
+
+      &__select {
+        min-height: 44px;
+      }
+
+      &__select-text {
+        min-height: 30px;
+        min-width: 30px;
+      }
+    }
+
+    &__input {
+      min-height: 40px;
+      border-right: none;
+      margin-bottom: 10px;
+      border-bottom: 1px solid #bab9ce;
+    }
+
+    &__submit {
+      height: 50px;
+      width: 100%;
+    }
+  }
+
+  .technology {
+    &__item {
+      margin-right: 0;
+    }
+  }
+}
