@@ -1,4 +1,54 @@
 @media(max-width: 1200px) {
+
+  .contact {
+    &__container {
+      flex-direction: column;
+    }
+
+    &__side {
+      margin-right: 0;
+    }
+  }
+
+  .team {
+    &__inner {
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    &__item {
+      margin-bottom: 30px;
+
+      &:nth-child(2n+2) {
+        margin-top: 0;
+      }
+
+      &:last-child {
+        margin-right: 20px;
+      }
+    }
+  }
+
+  .question {
+    &__inner {
+      flex-direction: column;
+    }
+
+    &__item {
+      max-width: 100%;
+      margin-right: 0;
+    }
+  }
+
+  .review {
+
+    &__item {
+      margin: 0 auto;
+      transform: scale(1) !important;
+      opacity: 1 !important;
+    }
+  }
+
   .preview {
     &__product-list {
       position: relative;
@@ -38,14 +88,89 @@
       margin-bottom: 30px;
     }
   }
+
+  .world {
+    &__image {
+      width: 1020px;
+      padding-bottom: 50px;
+    }
+
+    &__inner {
+      padding: 0 0 150px;
+    }
+
+    .container {
+      padding: 0;
+    }
+  }
 }
 
 @media(max-width: 992px) {
 
+  .footer {
+    padding-bottom: 60px;
+
+    &__inner {
+      flex-direction: column-reverse;
+    }
+
+    &__nav,
+    &__links,
+    &__payment-methods {
+      justify-content: center;
+    }
+
+    &__side {
+      &--right {
+        margin-bottom: 30px;
+      }
+    }
+  }
+
+  .world {
+
+    &__map {
+      overflow-x: scroll;
+      overflow-y: hidden;
+    }
+  }
+
+  .choose {
+    &__item {
+      flex-direction: column !important;
+      align-items: center;
+      margin-bottom: 50px;
+    }
+
+    &__description {
+      margin: 0 !important;
+      width: 100%;
+      margin-bottom: 30px !important;
+    }
+
+    &__text {
+      text-align: center;
+    }
+
+    &__title {
+      max-width: 100%;
+    }
+
+    &__image {
+      height: 100%;
+      width: 100%;
+    }
+  }
+
   .preview {
-    &__product-item {
-      width: 300px;
-      margin-right: 50px !important;
+    margin-bottom: 50px;
+
+    &__product-list {
+      display: none;
+    }
+
+    &__inner {
+      padding-bottom: 1px;
     }
   }
 
@@ -63,6 +188,46 @@
 }
 
 @media(max-width: 768px) {
+
+  .footer {
+
+    &__nav {
+      flex-wrap: wrap;
+    }
+
+    &__nav-item {
+      margin-bottom: 20px;
+    }
+  }
+
+  .contact {
+
+    &__container {
+      width: 100%;
+    }
+
+    &__side {
+      width: auto;
+    }
+  }
+
+  .team {
+    &__inner {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    &__item {
+      margin-right: 0;
+    }
+  }
+
+  .world {
+    &__inner {
+      padding: 0 0 150px;
+    }
+  }
+
   .plan {
 
     &__list {
@@ -77,6 +242,79 @@
 }
 
 @media(max-width: 576px) {
+
+  .footer {
+    &__links {
+      flex-direction: column;
+    }
+
+    &__link {
+      margin-right: 0;
+      margin-bottom: 10px;
+      display: flex;
+      justify-content: center;
+    }
+  }
+
+  .castomers {
+    &__inner {
+
+      &:after,
+      &:before {
+        width: 40px;
+        background: linear-gradient(to left, #ffffff 0, transparent 100%);
+      }
+
+      &:before {
+        background: linear-gradient(to right, #ffffff 0, transparent 100%);
+      }
+    }
+
+    .container {
+      padding: 0;
+    }
+  }
+
+  .plan {
+    &__tarif {
+      max-width: 100%;
+      position: relative;
+    }
+
+    &__type {
+      // width: 90%;
+      // margin: 0 auto 10px;
+      // border-radius: 14px
+      border-radius: 0;
+      clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 50% 69%, 0 100%);
+      position: absolute;
+      top: 0;
+      width: 70px;
+      box-shadow: 0px 0px 20px 0px rgba(20, 27, 201, 0.1);
+      padding: 0 10px 20px;
+      height: 80px;
+    }
+  }
+
+  .question {
+
+    &__item {
+      flex-direction: column;
+      text-align: center;
+    }
+
+    &__spot {
+      left: 50%;
+      transform: translate(-50%, 0);
+      top: 20px;
+    }
+
+    &__image {
+      margin: 0;
+      margin-top: 20px;
+      margin-bottom: 40px;
+    }
+  }
 
   .header {
     top: 15px;
@@ -187,6 +425,21 @@
   .technology {
     &__item {
       margin-right: 0;
+    }
+  }
+
+  .review {
+
+    .slick-list {
+      padding: 0 !important;
+    }
+
+    .slick-slide {
+      padding-left: 10px;
+    }
+
+    &__item {
+      max-width: 400px;
     }
   }
 }

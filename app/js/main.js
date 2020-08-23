@@ -7,11 +7,26 @@ document.addEventListener("DOMContentLoaded", function () {
     infinite: false,
     dots: true,
     autoplaySpeed: 10000,
-    arrows: false
+    arrows: false,
+    responsive: [{
+        breakpoint: 1200,
+        settings: {
+          slidesToShow: 2,
+          centerMode: false
+        }
+      },
+      {
+        breakpoint: 900,
+        settings: {
+          slidesToShow: 1,
+        }
+      }
+    ]
   });
 
   function createFigure() {
     const section = document.querySelector(".preview__figure-container"),
+      parent = document.querySelector(".preview"),
       colors = ["#2854aa", "#0a98b1", "#a1284d", "#8c43ff", "#9a3a63", "#5c46cd", "219174"],
       type = ["p", "t", "c"],
       shadow = Math.random(),
@@ -24,7 +39,7 @@ document.addEventListener("DOMContentLoaded", function () {
     figure.style.width = figureSize + "px";
     figure.style.height = figureSize + "px";
     let figureTop = Math.random() * innerHeight;
-    if (figureTop >= 700) figureTop = 700;
+    if (figureTop >= parent.offsetHeight - 150) figureTop = parent.offsetHeight - 150;
     figure.style.left = Math.random() * innerWidth - 60 + "px";
     figure.style.top = figureTop + "px";
     figure.style.backgroundColor = figureColor;
