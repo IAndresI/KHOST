@@ -702,7 +702,8 @@
   &__spot {
     position: absolute;
     top: 42px;
-    left: 87px;
+    left: 50%;
+    transform: translate(-50%, 0);
     border-radius: 39% 61% 75% 25% / 51% 50% 50% 49%;
     width: 100px;
     height: 100px;
@@ -1114,6 +1115,7 @@
 
   &__image {
     padding-top: 15px;
+    max-height: 414px;
   }
 }
 
@@ -1390,7 +1392,9 @@
 
   &__image {
     height: 210px;
-    background-color: #000;
+    width: 210px;
+    object-fit: contain;
+    background-color: #cac7d7;
     border-radius: 50%;
     margin-bottom: 30px;
   }
@@ -1554,7 +1558,8 @@
   &__inner {
     overflow: hidden;
     position: relative;
-    height: 140px;
+    height: 170px;
+    padding-top: 20px;
 
     &:before {
       z-index: 2;
@@ -1584,9 +1589,11 @@
   &__link {
     height: 60px;
     width: 60px;
-    background-color: #000;
+    background-color: #cac7d7;
     border-radius: 50%;
     margin-right: 80px;
+    overflow: hidden;
+    transition: all .3s;
 
     &:before {
       right: 0;
@@ -1597,6 +1604,15 @@
       left: 0;
       box-shadow: inset 55px 0 55px -55px rgba(0, 2, 3, .15);
     }
+
+    &:hover {
+      transform: scale(1.3);
+    }
+  }
+
+  &__image {
+    height: 100%;
+    width: 100%;
   }
 }
 

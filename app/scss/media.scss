@@ -154,11 +154,12 @@
 
     &__title {
       max-width: 100%;
+      text-align: center;
     }
 
     &__image {
       height: 100%;
-      width: 100%;
+      max-width: 630px;
     }
   }
 
@@ -189,6 +190,27 @@
 
 @media(max-width: 768px) {
 
+  .team {
+    &__item {
+      &:nth-child(2n+2) {
+        margin-right: 0;
+      }
+    }
+  }
+
+  .technology {
+    &__item {
+      max-width: 240px;
+      margin-right: 25px;
+      padding-left: 10px;
+      padding-right: 10px;
+
+      &:nth-child(2n +2) {
+        margin-right: 0;
+      }
+    }
+  }
+
   .footer {
 
     &__nav {
@@ -208,17 +230,6 @@
 
     &__side {
       width: auto;
-    }
-  }
-
-  .team {
-    &__inner {
-      flex-direction: column;
-      align-items: center;
-    }
-
-    &__item {
-      margin-right: 0;
     }
   }
 
@@ -242,6 +253,57 @@
 }
 
 @media(max-width: 576px) {
+
+  .team {
+
+    &__inner {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    &__item {
+      margin-right: 0;
+
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+  }
+
+  .choose {
+    &__image {
+      height: 100%;
+      width: 100%;
+      max-width: 630px;
+      max-height: 100%;
+    }
+
+    &__description {
+      padding-top: 0;
+    }
+
+    &__title {
+      font-size: 30px;
+    }
+  }
+
+  .footer {
+    &__inner {
+      padding-top: 60px;
+    }
+  }
+
+  .contact {
+    padding-top: 250px;
+    padding-bottom: 60px;
+    margin-bottom: -140px;
+  }
+
+  .world {
+    padding-top: 60px;
+    padding-bottom: 0;
+    margin-bottom: 60px;
+  }
 
   .footer {
     &__links {
@@ -276,15 +338,14 @@
   }
 
   .plan {
+    padding-bottom: 0;
+
     &__tarif {
       max-width: 100%;
       position: relative;
     }
 
     &__type {
-      // width: 90%;
-      // margin: 0 auto 10px;
-      // border-radius: 14px
       border-radius: 0;
       clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 50% 69%, 0 100%);
       position: absolute;
@@ -294,9 +355,26 @@
       padding: 0 10px 20px;
       height: 80px;
     }
+
+    .icon-check-circle-o:before {
+      position: absolute;
+      left: 25px;
+    }
+
+    &__description-item {
+      margin: 0 auto;
+      position: relative;
+      margin-bottom: 18px;
+      max-width: 200px;
+      padding-left: 45px;
+      display: flex;
+      justify-content: center;
+      text-align: center;
+    }
   }
 
   .question {
+    padding: 60px 0;
 
     &__item {
       flex-direction: column;
@@ -423,12 +501,16 @@
   }
 
   .technology {
+    margin-bottom: 60px;
+
     &__item {
+      min-width: 100%;
       margin-right: 0;
     }
   }
 
   .review {
+    padding: 60px 0;
 
     .slick-list {
       padding: 0 !important;
