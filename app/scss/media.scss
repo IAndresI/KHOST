@@ -53,7 +53,7 @@
     &__product-list {
       position: relative;
       flex-wrap: wrap;
-      top: 60px;
+      top: 100px;
       justify-content: center;
     }
 
@@ -91,16 +91,12 @@
 
   .world {
     &__image {
-      width: 1020px;
       padding-bottom: 50px;
     }
 
     &__inner {
-      padding: 0 0 150px;
-    }
-
-    .container {
       padding: 0;
+      overflow-x: scroll;
     }
   }
 }
@@ -124,14 +120,6 @@
       &--right {
         margin-bottom: 30px;
       }
-    }
-  }
-
-  .world {
-
-    &__map {
-      overflow-x: scroll;
-      overflow-y: hidden;
     }
   }
 
@@ -182,8 +170,33 @@
   }
 
   .nav {
+
+    &__item {
+      margin-right: 0;
+      width: 100%;
+    }
+
+    &__link {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
     &__list {
-      display: none;
+      position: absolute;
+      left: 0;
+      right: 0;
+      border-radius: 0 0 15px 15px;
+      top: 80px;
+      display: flex;
+      flex-direction: column;
+      clip-path: inset(0% 0% 100% 0%);
+      background-color: rgba(0, 0, 0, .8);
+
+      &--opened {
+        clip-path: inset(0% 0% 0% 0%) !important;
+      }
     }
   }
 }
@@ -230,12 +243,6 @@
 
     &__side {
       width: auto;
-    }
-  }
-
-  .world {
-    &__inner {
-      padding: 0 0 150px;
     }
   }
 
@@ -417,16 +424,28 @@
       width: 100%;
     }
 
+    &__line {
+      left: calc(50% - 20px) !important;
+      top: 15px !important;
+    }
+
     &__nav-mini {
       margin-right: 0;
       width: 100%;
       align-items: center;
       display: flex;
       flex-direction: column;
+      min-height: 30px;
     }
 
     &__button {
       margin-bottom: 30px;
+    }
+  }
+
+  .nav {
+    &__list {
+      top: 210px;
     }
   }
 
@@ -445,6 +464,7 @@
     &__form {
       flex-direction: column;
       height: auto;
+      padding: 20px 10px;
     }
 
     &__select {
@@ -492,6 +512,7 @@
       border-right: none;
       margin-bottom: 10px;
       border-bottom: 1px solid #bab9ce;
+      text-align: center;
     }
 
     &__submit {

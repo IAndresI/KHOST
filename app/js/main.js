@@ -61,31 +61,23 @@ document.addEventListener("DOMContentLoaded", function () {
   }
   setInterval(createFigure, 400);
 
-  function startAnimation({
-    elements,
-    triggerClass,
-    triggerHeight
-  }) {
-    elements.forEach(element => {
-      if ((pageYOffset + window.innerHeight - triggerHeight > element.getBoundingClientRect().y + pageYOffset) && (element.getBoundingClientRect().y + pageYOffset > pageYOffset + triggerHeight)) {
-        element.classList.add(triggerClass);
-      } else {
-        element.classList.remove(triggerClass);
-      }
-    });
-  }
+  let menuButton = document.querySelector(".header__nav-mini"),
+    menu = document.querySelector(".nav__list");
 
-  let titleImage = document.querySelectorAll(".title__image");
-  window.addEventListener("scroll", () => {
-    startAnimation({
-      elements: titleImage,
-      triggerClass: 'title__image-animation',
-      triggerHeight: 0
-    });
+  menuButton.addEventListener("click", function () {
+    menu.classList.toggle("nav__list--opened");
+
+    if (menu.classList.contains("nav__list--opened")) {
+      menuButton.classList.add("header__nav-mini--active");
+    } else {
+      menuButton.classList.remove("header__nav-mini--active");
+    }
   });
 
   let planButtons = document.querySelectorAll(".plan__button"),
-    activeSpan = document.querySelector(".plan__active-span");
+    activeSpan = document.querySelector(".plan__active-span"),
+    tarifs = document.querySelectorAll(".plan__tarif"),
+    tarifsPrice = document.querySelectorAll(".plan__price");
   planButtons.forEach(element => {
     element.addEventListener("click", function (e) {
       planButtons.forEach(element => {
@@ -94,11 +86,181 @@ document.addEventListener("DOMContentLoaded", function () {
       if (e.target.getAttribute("data-side") == "right") {
         activeSpan.style.transform = "translateX(100%)";
         activeSpan.style.backgroundSize = "100%";
+        tarifs.forEach(element => {
+          element.classList.add("plan__tarif--yearly");
+        });
       } else {
         activeSpan.style.transform = "translateX(0)";
         activeSpan.style.backgroundSize = "200%";
+        tarifs.forEach(element => {
+          element.classList.remove("plan__tarif--yearly");
+        });
       }
       e.target.classList.add("plan__button--active");
     });
   });
+
+  function startAnimation({
+    elements,
+    triggerClass,
+    triggerHeight,
+    infinity = false
+  }) {
+    if (elements.length > 1) {
+      elements.forEach(element => {
+        if ((pageYOffset + window.innerHeight - triggerHeight > element.getBoundingClientRect().y + pageYOffset) && (element.getBoundingClientRect().y + pageYOffset > pageYOffset - element.offsetHeight + triggerHeight)) {
+          element.classList.add(triggerClass);
+        } else {
+          if (infinity) {
+            element.classList.remove(triggerClass);
+          }
+        }
+      });
+    } else {
+      if ((pageYOffset + window.innerHeight - triggerHeight > elements.getBoundingClientRect().y + pageYOffset) && (elements.getBoundingClientRect().y + pageYOffset > pageYOffset - elements.offsetHeight + triggerHeight)) {
+        elements.classList.add(triggerClass);
+      } else {
+        if (infinity) {
+          elements.classList.remove(triggerClass);
+        }
+      }
+    }
+  }
+
+  let titleImage = document.querySelectorAll(".title__image"),
+    titleMain = document.querySelectorAll(".title__main"),
+    titleText = document.querySelectorAll(".title__text"),
+    titleLineLeft = document.querySelectorAll(".title__line")[0],
+    titleLineRight = document.querySelectorAll(".title__line")[1],
+    technologyItem = document.querySelectorAll(".technology__item"),
+    preview = document.querySelector(".preview__container"),
+    worldDot = document.querySelectorAll(".world__dot"),
+    chooseName = document.querySelectorAll(".choose__name"),
+    chooseTitle = document.querySelectorAll(".choose__title"),
+    chooseText = document.querySelectorAll(".choose__text"),
+    chooseImage = document.querySelectorAll(".choose__image"),
+    reviewItem = document.querySelectorAll(".review .slick-slide"),
+    questionItem = document.querySelectorAll(".question__item"),
+    questionItemSecond = document.querySelectorAll(".question__item:nth-child(2n+2)"),
+    teamItem = document.querySelectorAll(".team__item"),
+    started = document.querySelector(".started__inner"),
+    header = document.querySelector(".header");
+  window.addEventListener("scroll", () => {
+    restartAnimation();
+  });
+
+  restartAnimation();
+
+  function restartAnimation() {
+    startAnimation({
+      elements: titleImage,
+      triggerClass: 'animate-top-to-down',
+      triggerHeight: 0,
+      infinity: true
+    });
+
+    startAnimation({
+      elements: titleMain,
+      triggerClass: 'animate-right',
+      triggerHeight: 0
+    });
+
+    startAnimation({
+      elements: titleText,
+      triggerClass: 'animate-left',
+      triggerHeight: 0
+    });
+
+    startAnimation({
+      elements: titleLineLeft,
+      triggerClass: 'animate-left',
+      triggerHeight: 0
+    });
+
+    startAnimation({
+      elements: titleLineRight,
+      triggerClass: 'animate-right',
+      triggerHeight: 0
+    });
+
+    startAnimation({
+      elements: technologyItem,
+      triggerClass: 'animate-down',
+      triggerHeight: 0,
+    });
+
+    startAnimation({
+      elements: preview,
+      triggerClass: 'animate-scale-in',
+      triggerHeight: 0,
+      infinity: true
+    });
+
+    startAnimation({
+      elements: worldDot,
+      triggerClass: 'animate-scale-in',
+      triggerHeight: 0
+    });
+
+    startAnimation({
+      elements: chooseName,
+      triggerClass: 'animate-left',
+      triggerHeight: 0
+    });
+
+    startAnimation({
+      elements: chooseTitle,
+      triggerClass: 'animate-left',
+      triggerHeight: 0
+    });
+
+    startAnimation({
+      elements: chooseText,
+      triggerClass: 'animate-left',
+      triggerHeight: 0
+    });
+
+    startAnimation({
+      elements: chooseImage,
+      triggerClass: 'animate-right',
+      triggerHeight: 0
+    });
+
+    startAnimation({
+      elements: reviewItem,
+      triggerClass: 'animate-scale-in',
+      triggerHeight: -30
+    });
+
+    startAnimation({
+      elements: questionItem,
+      triggerClass: 'animate-left',
+      triggerHeight: 0
+    });
+
+    startAnimation({
+      elements: questionItemSecond,
+      triggerClass: 'animate-right',
+      triggerHeight: 0
+    });
+
+    startAnimation({
+      elements: teamItem,
+      triggerClass: 'animate-down',
+      triggerHeight: 0
+    });
+
+    startAnimation({
+      elements: started,
+      triggerClass: 'animate-scale-in',
+      triggerHeight: 0
+    });
+
+    startAnimation({
+      elements: header,
+      triggerClass: 'animate-top',
+      triggerHeight: 0,
+      infinity: true
+    });
+  }
 });
