@@ -579,7 +579,6 @@
 
   &__figure {
     animation: translateUpRotate 10s;
-    position: absolute;
     z-index: 0;
 
     @keyframes translateUpRotate {
@@ -1182,7 +1181,7 @@
     align-items: center;
 
     &--disable {
-      opacity: .5;
+      opacity: .4;
     }
   }
 
