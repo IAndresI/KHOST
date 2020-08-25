@@ -100,30 +100,57 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 
+  console.log(1 % 2);
+
   function startAnimation({
     elements,
     triggerClass,
     triggerHeight,
-    infinity = false
+    infinity = false,
+    trough = {
+      number: 0,
+      withFirst: false
+    }
   }) {
-    if (elements.length > 1) {
-      elements.forEach(element => {
-        if ((pageYOffset + window.innerHeight - triggerHeight > element.getBoundingClientRect().y + pageYOffset) && (element.getBoundingClientRect().y + pageYOffset > pageYOffset - element.offsetHeight + triggerHeight)) {
-          element.classList.add(triggerClass);
-        } else {
-          if (infinity) {
-            element.classList.remove(triggerClass);
-          }
-        }
-      });
-    } else {
-      if ((pageYOffset + window.innerHeight - triggerHeight > elements.getBoundingClientRect().y + pageYOffset) && (elements.getBoundingClientRect().y + pageYOffset > pageYOffset - elements.offsetHeight + triggerHeight)) {
-        elements.classList.add(triggerClass);
+    function calculated(element) {
+      if ((pageYOffset + window.innerHeight - triggerHeight > element.getBoundingClientRect().y + pageYOffset) && (element.getBoundingClientRect().y + pageYOffset > pageYOffset - element.offsetHeight + triggerHeight)) {
+        element.classList.add(triggerClass);
       } else {
         if (infinity) {
-          elements.classList.remove(triggerClass);
+          element.classList.remove(triggerClass);
         }
       }
+    }
+    if (elements.length > 1) {
+      if (trough) {
+        let temp = trough.number;
+        if (trough.withFirst) {
+          elements.forEach((element, i) => {
+            if (trough.withFirst) {
+              calculated(element);
+              trough.withFirst = false;
+            }
+
+            if (trough.withFirst == false) {
+              if (i == temp + 1) {
+                calculated(element);
+                temp += trough.number + 1;
+              }
+            }
+          });
+        } else {
+          elements.forEach((element, i) => {
+            if (i == temp) {
+              calculated(element);
+              temp += trough.number + 1;
+            }
+          });
+        }
+      }
+    } else {
+      let element;
+      elements.length == 1 ? element = elements[0] : element = elements;
+      calculated(element);
     }
   }
 
@@ -133,7 +160,7 @@ document.addEventListener("DOMContentLoaded", function () {
     titleLineLeft = document.querySelectorAll(".title__line")[0],
     titleLineRight = document.querySelectorAll(".title__line")[1],
     technologyItem = document.querySelectorAll(".technology__item"),
-    preview = document.querySelector(".preview__container"),
+    preview = document.querySelectorAll(".preview__container"),
     worldDot = document.querySelectorAll(".world__dot"),
     chooseName = document.querySelectorAll(".choose__name"),
     chooseTitle = document.querySelectorAll(".choose__title"),
@@ -143,11 +170,13 @@ document.addEventListener("DOMContentLoaded", function () {
     questionItem = document.querySelectorAll(".question__item"),
     questionItemSecond = document.querySelectorAll(".question__item:nth-child(2n+2)"),
     teamItem = document.querySelectorAll(".team__item"),
-    started = document.querySelector(".started__inner"),
-    header = document.querySelector(".header");
+    started = document.querySelectorAll(".started__inner"),
+    header = document.querySelectorAll(".header");
   window.addEventListener("scroll", () => {
     restartAnimation();
   });
+
+  console.log(document.querySelectorAll(".choose__image:nth-child(2n+2)"));
 
   restartAnimation();
 
@@ -204,26 +233,78 @@ document.addEventListener("DOMContentLoaded", function () {
 
     startAnimation({
       elements: chooseName,
+      triggerClass: 'animate-right',
+      triggerHeight: 0,
+      trough: {
+        number: 1,
+      }
+    });
+
+    startAnimation({
+      elements: chooseTitle,
+      triggerClass: 'animate-right',
+      triggerHeight: 0,
+      trough: {
+        number: 1,
+      }
+    });
+
+    startAnimation({
+      elements: chooseText,
+      triggerClass: 'animate-right',
+      triggerHeight: 0,
+      trough: {
+        number: 1,
+      }
+    });
+
+    startAnimation({
+      elements: chooseImage,
       triggerClass: 'animate-left',
-      triggerHeight: 0
+      triggerHeight: 0,
+      trough: {
+        number: 1
+      }
+    });
+
+    startAnimation({
+      elements: chooseName,
+      triggerClass: 'animate-left',
+      triggerHeight: 0,
+      trough: {
+        number: 1,
+        withFirst: true
+      }
     });
 
     startAnimation({
       elements: chooseTitle,
       triggerClass: 'animate-left',
-      triggerHeight: 0
+      triggerHeight: 0,
+      trough: {
+        number: 1,
+        withFirst: true
+      }
     });
 
     startAnimation({
       elements: chooseText,
       triggerClass: 'animate-left',
-      triggerHeight: 0
+      triggerHeight: 0,
+      trough: {
+        number: 1,
+        withFirst: true
+      }
     });
 
     startAnimation({
       elements: chooseImage,
       triggerClass: 'animate-right',
-      triggerHeight: 0
+      triggerHeight: 0,
+      trough: {
+        number: 1,
+        withFirst: true
+      }
     });
 
     startAnimation({
