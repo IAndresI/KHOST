@@ -1377,7 +1377,7 @@
   padding: 150px 0;
 
   .slick-slide {
-    margin: 40px 0;
+    margin: 50px 0;
 
     .review__item {
       opacity: .8;
@@ -1473,6 +1473,24 @@
     color: #6f7297;
   }
 
+  .link {
+
+
+    &:hover,
+    &:focus {
+      outline: transparent;
+
+      .review__author {
+        transition: all .3s;
+        color: #e5456b;
+      }
+
+      .review__image {
+        transform: translate(-50%, 0) scale(1.2);
+      }
+    }
+  }
+
   &__link {
     background: linear-gradient(to left, rgb(103, 0, 231) 0%, rgb(250, 99, 123) 100%);
     color: transparent;
@@ -1483,6 +1501,7 @@
     &:hover,
     &:focus {
       background-size: 300%;
+      outline: transparent;
     }
 
     &:active {
@@ -1502,13 +1521,15 @@
     height: 80px;
     width: 80px;
     border-radius: 50%;
-    box-shadow: 0px 0px 20px 0px rgba(20, 27, 201, 0.1);
+    box-shadow: 0px 0px 20px 0px rgba(0, 00, 0, 0.2);
     object-fit: cover;
     position: absolute;
     top: -40px;
     left: 50%;
+    background-color: #cac7d7;
     transform: translate(-50%, 0);
     background-color: #fff;
+    transition: all .6s;
   }
 }
 
