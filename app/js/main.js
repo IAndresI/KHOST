@@ -89,12 +89,30 @@ document.addEventListener("DOMContentLoaded", function () {
         tarifs.forEach(element => {
           element.classList.add("plan__tarif--yearly");
         });
+        setTimeout(() => {
+          tarifsPrice.forEach(element => {
+            if (element.classList.contains("plan__price--yearly")) {
+              element.style.display = "block";
+            } else {
+              element.style.display = "none";
+            }
+          });
+        }, 400);
       } else {
         activeSpan.style.transform = "translateX(0)";
         activeSpan.style.backgroundSize = "200%";
         tarifs.forEach(element => {
           element.classList.remove("plan__tarif--yearly");
         });
+        setTimeout(() => {
+          tarifsPrice.forEach(element => {
+            if (element.classList.contains("plan__price--yearly")) {
+              element.style.display = "none";
+            } else {
+              element.style.display = "block";
+            }
+          });
+        }, 400);
       }
       e.target.classList.add("plan__button--active");
     });
