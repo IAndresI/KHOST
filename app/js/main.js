@@ -30,10 +30,11 @@ document.addEventListener("DOMContentLoaded", function () {
     container,
     maximumWidth = 50,
     additionalClass,
-    bottomPadding = 0
+    bottomPadding = 0,
+    parentElement
   }) {
     const section = document.querySelector(container),
-      parent = document.querySelector(".preview"),
+      parent = document.querySelector(parentElement),
       colors = ["#2854aa", "#0a98b1", "#a1284d", "#8c43ff", "#9a3a63", "#5c46cd", "219174"],
       type = ["p", "t", "c"],
       figure = document.createElement("span"),
@@ -74,7 +75,8 @@ document.addEventListener("DOMContentLoaded", function () {
         container: container,
         maximumWidth: maximumWidth,
         additionalClass: additionalClass,
-        bottomPadding: bottomPadding
+        bottomPadding: bottomPadding,
+        parentElement: parentElement
       });
     }, creationInterval);
   }
@@ -85,7 +87,8 @@ document.addEventListener("DOMContentLoaded", function () {
     container: ".preview__figure-container",
     maximumWidth: 50,
     additionalClass: "preview__figure",
-    bottomPadding: 150
+    bottomPadding: 150,
+    parentElement: ".preview"
   });
 
   let menuButton = document.querySelector(".header__nav-mini"),
