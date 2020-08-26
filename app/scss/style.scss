@@ -149,19 +149,17 @@
 }
 
 .body {
-  &--show {
-    @keyframes opacity {
-      0% {
-        opacity: 0;
-      }
-
-      100% {
-        opacity: 1;
-      }
+  @keyframes opacity {
+    0% {
+      opacity: 0;
     }
 
-    animation: opacity 1s cubic-bezier(0.46, 0.04, 1, 1) forwards;
+    100% {
+      opacity: 1;
+    }
   }
+
+  animation: opacity 1s cubic-bezier(0.46, 0.04, .8, 1) forwards;
 }
 
 .title {
@@ -177,7 +175,7 @@
   &__special {
     background: linear-gradient(to left, rgb(103, 0, 231) 0%, rgb(250, 99, 123) 100%);
     color: transparent;
-    background-clip: text;
+    -webkit-background-clip: text;
     transition: all .3s;
     background-size: 100%;
 

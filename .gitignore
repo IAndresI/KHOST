@@ -1,1 +1,3 @@
 node_modules
+app/models
+package-lock.json
