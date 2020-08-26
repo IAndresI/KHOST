@@ -96,6 +96,7 @@
 
     &__inner {
       padding: 0;
+      overflow-y: hidden;
       overflow-x: scroll;
     }
   }
@@ -174,6 +175,8 @@
     &__item {
       margin-right: 0;
       width: 100%;
+      min-height: 44px;
+      overflow: hidden;
     }
 
     &__link {
@@ -191,11 +194,12 @@
       top: 80px;
       display: flex;
       flex-direction: column;
-      clip-path: inset(0% 0% 100% 0%);
+      max-height: 0;
+      overflow: hidden;
       background-color: rgba(0, 0, 0, .8);
 
       &--opened {
-        clip-path: inset(0% 0% 0% 0%) !important;
+        max-height: 500px;
       }
     }
   }

@@ -594,6 +594,7 @@
   &__figure {
     animation: translateUpRotate 10s;
     z-index: 0;
+    transform-origin: center;
 
     @keyframes translateUpRotate {
       0% {
@@ -735,7 +736,6 @@
     border-radius: 10px;
     margin-right: 15px;
     transition: all .3s;
-    opacity: 0;
 
     &:hover {
       color: #ffffff;
@@ -1252,7 +1252,6 @@
     position: absolute;
     top: 158px;
     left: 171px;
-    transform: scale(0);
 
     &--newyork {
       top: 144px;
@@ -1408,6 +1407,7 @@
     list-style-type: none;
     display: flex;
     width: fit-content;
+    justify-content: center;
     margin: 0 auto;
     padding-top: 115px;
 

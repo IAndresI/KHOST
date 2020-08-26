@@ -156,7 +156,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }) {
     function calculated(element) {
-      if ((pageYOffset + window.innerHeight - triggerHeight > element.getBoundingClientRect().y + pageYOffset) && (element.getBoundingClientRect().y + pageYOffset > pageYOffset - element.offsetHeight + triggerHeight)) {
+      if ((window.pageYOffset + window.innerHeight - triggerHeight > element.getBoundingClientRect().top + window.pageYOffset) && (element.getBoundingClientRect().top + window.pageYOffset > window.pageYOffset - element.offsetHeight + triggerHeight)) {
         element.classList.add(triggerClass);
       } else {
         if (infinity) {
