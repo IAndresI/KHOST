@@ -148,6 +148,22 @@
   animation: scaleIn 3s cubic-bezier(0, 0.96, 0.27, 1) forwards;
 }
 
+.body {
+  &--show {
+    @keyframes opacity {
+      0% {
+        opacity: 0;
+      }
+
+      100% {
+        opacity: 1;
+      }
+    }
+
+    animation: opacity 1s cubic-bezier(0.46, 0.04, 1, 1) forwards;
+  }
+}
+
 .title {
   font-size: 30px;
   margin: 0 auto;
@@ -161,7 +177,7 @@
   &__special {
     background: linear-gradient(to left, rgb(103, 0, 231) 0%, rgb(250, 99, 123) 100%);
     color: transparent;
-    -webkit-background-clip: text;
+    background-clip: text;
     transition: all .3s;
     background-size: 100%;
 
