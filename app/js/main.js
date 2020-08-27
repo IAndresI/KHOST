@@ -46,7 +46,7 @@ document.addEventListener("DOMContentLoaded", function () {
     figure.style.width = figure.style.height = figureSize + "px";
     let figureTop = Math.random() * innerHeight;
     if (figureTop >= parent.offsetHeight - bottomPadding) figureTop = parent.offsetHeight - bottomPadding;
-    figure.style.left = Math.random() * innerWidth - 60 + "px";
+    figure.style.left = Math.random() * document.documentElement.offsetWidth - 60 + "px";
     figure.style.top = figureTop + "px";
     figure.style.backgroundColor = figureColor;
     switch (figureType) {
