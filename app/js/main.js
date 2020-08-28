@@ -151,35 +151,47 @@ document.addEventListener("DOMContentLoaded", function () {
   function startAnimation({
     elements,
     triggerClass,
-    triggerHeight,
+    triggerHeight = 100,
     infinity = false,
     trough = {
       number: 0,
       withFirst: false
     }
   }) {
-    function calculated(element) {
+
+    function animationTrigger(element) {
       if ((window.pageYOffset + window.innerHeight - triggerHeight > element.getBoundingClientRect().top + window.pageYOffset) && (element.getBoundingClientRect().top + window.pageYOffset > window.pageYOffset - element.offsetHeight + triggerHeight)) {
         element.classList.add(triggerClass);
-      } else {
-        if (infinity) {
-          element.classList.remove(triggerClass);
-        }
+        element.style.visibility = "visible";
+      } else if (infinity) {
+        element.classList.remove(triggerClass);
+        element.style.visibility = "hidden";
       }
     }
+
+    function trigger(element) {
+      animationTrigger(element);
+      window.addEventListener("scroll", () => {
+        animationTrigger(element);
+      });
+    }
+
     if (elements.length > 1) {
+      elements.forEach((element) => {
+        element.style.visibility = "hidden";
+      });
       if (trough) {
         let temp = trough.number;
         if (trough.withFirst) {
           elements.forEach((element, i) => {
             if (trough.withFirst) {
-              calculated(element);
+              trigger(element);
               trough.withFirst = false;
             }
 
             if (trough.withFirst == false) {
               if (i == temp + 1) {
-                calculated(element);
+                trigger(element);
                 temp += trough.number + 1;
               }
             }
@@ -187,7 +199,7 @@ document.addEventListener("DOMContentLoaded", function () {
         } else {
           elements.forEach((element, i) => {
             if (i == temp) {
-              calculated(element);
+              trigger(element);
               temp += trough.number + 1;
             }
           });
@@ -196,15 +208,16 @@ document.addEventListener("DOMContentLoaded", function () {
     } else {
       let element;
       elements.length == 1 ? element = elements[0] : element = elements;
-      calculated(element);
+      element.style.visibility = "hidden";
+      trigger(element);
     }
   }
 
   let titleImage = document.querySelectorAll(".title__image"),
     titleMain = document.querySelectorAll(".title__main"),
     titleText = document.querySelectorAll(".title__text"),
-    titleLineLeft = document.querySelectorAll(".title__line")[0],
-    titleLineRight = document.querySelectorAll(".title__line")[1],
+    titleLineLeft = document.querySelectorAll(".title__line:nth-child(2n + 2)"),
+    titleLineRight = document.querySelectorAll(".title__line"),
     technologyItem = document.querySelectorAll(".technology__item"),
     preview = document.querySelectorAll(".preview__container"),
     worldDot = document.querySelectorAll(".world__dot"),
@@ -218,174 +231,150 @@ document.addEventListener("DOMContentLoaded", function () {
     teamItem = document.querySelectorAll(".team__item"),
     started = document.querySelectorAll(".started__inner"),
     header = document.querySelectorAll(".header");
-  window.addEventListener("scroll", () => {
-    restartAnimation();
+
+  startAnimation({
+    elements: titleImage,
+    triggerClass: 'animate-top-to-down',
+    infinity: true,
+    triggerHeight: 0
   });
 
-  restartAnimation();
+  startAnimation({
+    elements: titleMain,
+    triggerClass: 'animate-right-sm',
+  });
 
-  function restartAnimation() {
-    startAnimation({
-      elements: titleImage,
-      triggerClass: 'animate-top-to-down',
-      triggerHeight: 0,
-      infinity: true
-    });
+  startAnimation({
+    elements: titleText,
+    triggerClass: 'animate-left-sm',
+  });
 
-    startAnimation({
-      elements: titleMain,
-      triggerClass: 'animate-right',
-      triggerHeight: 0
-    });
+  startAnimation({
+    elements: titleLineLeft,
+    triggerClass: 'animate-right',
+    infinity: true,
+    triggerHeight: 0
+  });
 
-    startAnimation({
-      elements: titleText,
-      triggerClass: 'animate-left',
-      triggerHeight: 0
-    });
+  startAnimation({
+    elements: titleLineRight,
+    triggerClass: 'animate-left',
+    infinity: true,
+    triggerHeight: 0
+  });
 
-    startAnimation({
-      elements: titleLineLeft,
-      triggerClass: 'animate-left',
-      triggerHeight: 0
-    });
+  startAnimation({
+    elements: technologyItem,
+    triggerClass: 'animate-down',
+  });
 
-    startAnimation({
-      elements: titleLineRight,
-      triggerClass: 'animate-right',
-      triggerHeight: 0
-    });
+  startAnimation({
+    elements: preview,
+    triggerClass: 'animate-scale-in',
+    infinity: true
+  });
 
-    startAnimation({
-      elements: technologyItem,
-      triggerClass: 'animate-down',
-      triggerHeight: 0,
-    });
+  startAnimation({
+    elements: worldDot,
+    triggerClass: 'animate-scale-in',
+  });
 
-    startAnimation({
-      elements: preview,
-      triggerClass: 'animate-scale-in',
-      triggerHeight: 0,
-      infinity: true
-    });
+  startAnimation({
+    elements: chooseName,
+    triggerClass: 'animate-right-sm',
+    trough: {
+      number: 1,
+    }
+  });
 
-    startAnimation({
-      elements: worldDot,
-      triggerClass: 'animate-scale-in',
-      triggerHeight: 0
-    });
+  startAnimation({
+    elements: chooseTitle,
+    triggerClass: 'animate-right-sm',
+    trough: {
+      number: 1,
+    }
+  });
 
-    startAnimation({
-      elements: chooseName,
-      triggerClass: 'animate-right',
-      triggerHeight: 0,
-      trough: {
-        number: 1,
-      }
-    });
+  startAnimation({
+    elements: chooseText,
+    triggerClass: 'animate-right-sm',
+    trough: {
+      number: 1,
+    }
+  });
 
-    startAnimation({
-      elements: chooseTitle,
-      triggerClass: 'animate-right',
-      triggerHeight: 0,
-      trough: {
-        number: 1,
-      }
-    });
+  startAnimation({
+    elements: chooseImage,
+    triggerClass: 'animate-left-sm',
+    trough: {
+      number: 1
+    }
+  });
 
-    startAnimation({
-      elements: chooseText,
-      triggerClass: 'animate-right',
-      triggerHeight: 0,
-      trough: {
-        number: 1,
-      }
-    });
+  startAnimation({
+    elements: chooseName,
+    triggerClass: 'animate-left-sm',
+    trough: {
+      number: 1,
+      withFirst: true
+    }
+  });
 
-    startAnimation({
-      elements: chooseImage,
-      triggerClass: 'animate-left',
-      triggerHeight: 0,
-      trough: {
-        number: 1
-      }
-    });
+  startAnimation({
+    elements: chooseTitle,
+    triggerClass: 'animate-left-sm',
+    trough: {
+      number: 1,
+      withFirst: true
+    }
+  });
 
-    startAnimation({
-      elements: chooseName,
-      triggerClass: 'animate-left',
-      triggerHeight: 0,
-      trough: {
-        number: 1,
-        withFirst: true
-      }
-    });
+  startAnimation({
+    elements: chooseText,
+    triggerClass: 'animate-left-sm',
+    trough: {
+      number: 1,
+      withFirst: true
+    }
+  });
 
-    startAnimation({
-      elements: chooseTitle,
-      triggerClass: 'animate-left',
-      triggerHeight: 0,
-      trough: {
-        number: 1,
-        withFirst: true
-      }
-    });
+  startAnimation({
+    elements: chooseImage,
+    triggerClass: 'animate-right-sm',
+    trough: {
+      number: 1,
+      withFirst: true
+    }
+  });
 
-    startAnimation({
-      elements: chooseText,
-      triggerClass: 'animate-left',
-      triggerHeight: 0,
-      trough: {
-        number: 1,
-        withFirst: true
-      }
-    });
+  startAnimation({
+    elements: reviewItem,
+    triggerClass: 'animate-scale-in',
+  });
 
-    startAnimation({
-      elements: chooseImage,
-      triggerClass: 'animate-right',
-      triggerHeight: 0,
-      trough: {
-        number: 1,
-        withFirst: true
-      }
-    });
+  startAnimation({
+    elements: questionItem,
+    triggerClass: 'animate-left-sm',
+  });
 
-    startAnimation({
-      elements: reviewItem,
-      triggerClass: 'animate-scale-in',
-      triggerHeight: -30
-    });
+  startAnimation({
+    elements: questionItemSecond,
+    triggerClass: 'animate-right-sm',
+  });
 
-    startAnimation({
-      elements: questionItem,
-      triggerClass: 'animate-left',
-      triggerHeight: 0
-    });
+  startAnimation({
+    elements: teamItem,
+    triggerClass: 'animate-down',
+  });
 
-    startAnimation({
-      elements: questionItemSecond,
-      triggerClass: 'animate-right',
-      triggerHeight: 0
-    });
+  startAnimation({
+    elements: started,
+    triggerClass: 'animate-scale-in',
+  });
 
-    startAnimation({
-      elements: teamItem,
-      triggerClass: 'animate-down',
-      triggerHeight: 0
-    });
-
-    startAnimation({
-      elements: started,
-      triggerClass: 'animate-scale-in',
-      triggerHeight: 0
-    });
-
-    startAnimation({
-      elements: header,
-      triggerClass: 'animate-top',
-      triggerHeight: 0,
-      infinity: true
-    });
-  }
+  startAnimation({
+    elements: header,
+    triggerClass: 'animate-top',
+    infinity: true
+  });
 });
