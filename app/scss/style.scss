@@ -620,7 +620,6 @@
   &__figure {
     animation: translateUpRotate 10s;
     z-index: 0;
-    transform-origin: center;
 
     @keyframes translateUpRotate {
       0% {
@@ -636,10 +635,6 @@
         opacity: 0;
         transform: translate(0, -100%) rotate(360deg);
       }
-    }
-
-    &:hover {
-      transform: scale(2);
     }
   }
 

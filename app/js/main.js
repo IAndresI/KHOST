@@ -30,23 +30,30 @@ document.addEventListener("DOMContentLoaded", function () {
     container,
     maximumWidth = 50,
     additionalClass,
-    bottomPadding = 0,
-    parentElement
+    bottomPadding = 0
   }) {
     const section = document.querySelector(container),
-      parent = document.querySelector(parentElement),
+      parent = section.parentElement,
       colors = ["#2854aa", "#0a98b1", "#a1284d", "#8c43ff", "#9a3a63", "#5c46cd", "219174"],
       type = ["p", "t", "c"],
       figure = document.createElement("span"),
       figureColor = colors[Math.floor(Math.random() * colors.length)],
       figureType = type[Math.floor(Math.random() * type.length)],
       figureSize = (Math.random() * maximumWidth);
+    section.style.width = parent.offsetWidth + "px";
+    section.style.height = parent.offsetHeight + "px";
+    section.style.overflow = "hidden";
+    window.addEventListener("resize", function resizeForParticles() {
+      section.style.width = parent.offsetWidth + "px";
+      section.style.height = parent.offsetHeight + "px";
+      section.style.overflow = "hidden";
+    });
     if (additionalClass) figure.classList.add(additionalClass);
-    figure.style.position = "absolute";
-    figure.style.width = figure.style.height = figureSize + "px";
     let figureTop = Math.random() * innerHeight;
     if (figureTop >= parent.offsetHeight - bottomPadding) figureTop = parent.offsetHeight - bottomPadding;
-    figure.style.left = Math.random() * document.documentElement.offsetWidth - 60 + "px";
+    figure.style.position = "absolute";
+    figure.style.width = figure.style.height = figureSize + "px";
+    figure.style.left = Math.random() * document.documentElement.offsetWidth + "px";
     figure.style.top = figureTop + "px";
     figure.style.backgroundColor = figureColor;
     switch (figureType) {
@@ -75,8 +82,7 @@ document.addEventListener("DOMContentLoaded", function () {
         container: container,
         maximumWidth: maximumWidth,
         additionalClass: additionalClass,
-        bottomPadding: bottomPadding,
-        parentElement: parentElement
+        bottomPadding: bottomPadding
       });
     }, creationInterval);
   }
@@ -87,8 +93,7 @@ document.addEventListener("DOMContentLoaded", function () {
     container: ".preview__figure-container",
     maximumWidth: 50,
     additionalClass: "preview__figure",
-    bottomPadding: 150,
-    parentElement: ".preview"
+    bottomPadding: 150
   });
 
   let menuButton = document.querySelector(".header__nav-mini"),
@@ -160,7 +165,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }) {
 
     function animationTrigger(element) {
-      if ((window.pageYOffset + window.innerHeight - triggerHeight > element.getBoundingClientRect().top + window.pageYOffset) && (element.getBoundingClientRect().top + window.pageYOffset > window.pageYOffset - element.offsetHeight + triggerHeight)) {
+      if ((window.pageYOffset + window.innerHeight - triggerHeight > element.getBoundingClientRect().top + window.pageYOffset) && (element.getBoundingClientRect().top + window.pageYOffset > window.pageYOffset + triggerHeight - element.offsetHeight)) {
         element.classList.add(triggerClass);
         element.style.visibility = "visible";
       } else if (infinity) {
