@@ -379,7 +379,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
   startAnimation({
     elements: header,
-    triggerClass: 'animate-top',
+    triggerClass: 'animate-opacity-in',
+    triggerHeight: 0,
     infinity: true
   });
 });
